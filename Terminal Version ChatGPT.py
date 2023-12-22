@@ -1,7 +1,8 @@
+import os
 import openai
 
 # Replace 'your-api-key' with your actual OpenAI API key
-openai.api_key = 'my key messed up'
+openai.api_key = os.getenv('OPENAI_API_KEY_MAX')
 
 def get_openai_response(prompt_text):
     try:
