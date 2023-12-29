@@ -1,5 +1,15 @@
 import platform
+import pkg_resources
 import subprocess
+import sys
+
+required = {'screeninfo'}
+installed = {pkg.key for pkg in pkg_resources.working_set}
+missing = required - installed
+
+if missing:
+    python = sys.executable
+    subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
 
 from screeninfo import get_monitors
 
